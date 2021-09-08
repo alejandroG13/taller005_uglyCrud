@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="row border mt-3">
+    <div class="col-md-8">
+      <div class="list-group mt-3">
+        <ul class="list-group">
+          <span class="text-primary" (click)="cancelar()"
+            >Listado de Sitios Registrados</span
+          >
+          <li
+            class="list-group-item list-group-item-action list-group-item py-1"
+            *ngFor="let objSitio of sitioArreglo"
+            (click)="seleccionar(objSitio)"
+            [class.active]="objSitio == sitioSeleccionado"
+          >
+            {{ objSitio.nombre_sitio }} <small>{{objSitio.capacidad_sitio}} {{objSitio.codsede_sitio}}</small>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-md-4 mt-3 bg-light">
+      <form>
+        <div class="form-group">
+          <label for="nombre_sitio">Nombre Sitio</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nombre_sitio"
+            name="nombre_sitio"
+            [(ngModel)]="sitioSeleccionado.nombre_sitio"
+          />
+        </div>
+        <div class="form-group">
+          <label for="capacidad_sitio">Capacidad Sitio</label>
+          <input
+            type="text"
+            class="form-control"
+            id="capacidad_sitio"
+            name="capacidad_sitio"
+            [(ngModel)]="sitioSeleccionado.capacidad_sitio"
+          />
+        </div>
+        <div class="form-group">
+          <label for="cod_sede">Codigo de Sede</label>
+          <input
+            type="text"
+            class="form-control"
+            id="cod_sede"
+            name="cod_sede"
+            [(ngModel)]="sitioSeleccionado.codsede_sitio"
+          />
+        </div>
+        <button class="btn btn-success"
+        (click)="procesarSitio()">
+          <span *ngIf="sitioSeleccionado.cod_sitio == 0">Crear</span>
+          <span *ngIf="sitioSeleccionado.cod_sitio != 0">Actualizar</span>
+        </button>
+        <button *ngIf="sitioSeleccionado.cod_sitio != 0" class="btn btn-danger"
+        (click)="eliminarSitio()">
+          <span>Eliminar</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

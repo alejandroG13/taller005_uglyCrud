@@ -1,0 +1,13 @@
+.list-group-item.active {
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.list-group-item.active:hover, .list-group-item.active:focus{
+  z-index: 1;
+  color: #495057;
+  text-decoration: none;
+  background-color:rgb(170, 167, 167);
+
+}
